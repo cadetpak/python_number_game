@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<title>Great Number Game</title>
+	</head>
+	<body>
+		<div id="container">
+			<div id="content">
+				<h1>Welcome to the Great Number Game!</h1>
+				<form action = "/guess" method="POST">
+					<input type="number" name="guess" min="0" max="100">
+					<input type="submit" value="Submit">
+				</form>	
+				<div class="higher">
+					{% if session['guess'] :%}
+						{% if session['random'] > session['guess'] :%}
+							<h1>Too Low!</h1>
+					
+						{% elif session['random'] < session['guess'] :%}
+							<h2>Too High!</h2>
+
+						{% elif session['random'] == session['guess'] :%}
+							<h3>Correct!</h3>	
+						{% endif %}	
+					{% endif %}
+
+
+				</div> 
+				<div class="restart">
+					<form action = "/restart" method="POST">
+						<input type="submit" value="Restart">
+					</form>
+				</div> 				
+
+			</div>
+
+		</div>
+	</body>
+				
+</html>
